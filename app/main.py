@@ -1,3 +1,4 @@
+import _io
 import os
 
 
@@ -7,8 +8,9 @@ class CleanUpFile:
         self.filename = filename
         self.file = None
 
-    def __enter__(self) -> object:
+    def __enter__(self) -> _io.TextIOWrapper:
         self.file = open(self.filename, "w")
+        print(type(self.file))
         return self.file
 
     def __exit__(self, exc_type: str, exc_val: int, exc_tb: str) -> None:
